@@ -1,0 +1,29 @@
+{
+  "name": "endless-tic-tac-toe-multiplayer",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Endless Tic-Tac-Toe, online multiplayer with room codes",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "npm run build && wrangler deploy",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.app.json && tsc -p tsconfig.worker.json",
+    "cf-typegen": "wrangler types"
+  },
+  "dependencies": {
+    "@tsparticles/confetti": "^4.6.0",
+    "sweetalert2": "^11.26.26"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.70.1",
+    "@tailwindcss/vite": "^4.3.5",
+    "tailwindcss": "^4.3.5",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8",
+    "vitest": "^4.1.12",
+    "wrangler": "^4.168.0"
+  }
+}

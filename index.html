@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#4338ca">
+    <meta name="description" content="Endless Tic-Tac-Toe: each player keeps only 3 pieces on the board. Play online with a friend using a room code.">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+    <link rel="manifest" href="/img/site.webmanifest">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+    <title>Endless Tic-Tac-Toe</title>
+    <script type="module" src="/app/main.ts"></script>
+</head>
+<body class="min-h-dvh bg-linear-to-r from-rose-700 via-fuchsia-700 to-indigo-700 font-quicksand text-white antialiased">
+
+    <!-- How to play (opens a modal); visible on every screen -->
+    <button id="helpBtn" type="button" aria-label="How to play" title="How to play"
+        class="fixed right-3 top-3 z-10 flex size-10 items-center justify-center rounded-full border border-white/40 bg-white/20 text-xl font-bold shadow-lg backdrop-blur transition hover:bg-white/30 active:scale-95">
+        ?
+    </button>
+
+    <!-- Lobby -->
+    <section id="lobby" class="min-h-dvh flex items-center justify-center p-4">
+        <div class="w-full max-w-sm text-center">
+            <img src="/img/icon.png" alt="" class="mx-auto size-20 drop-shadow-lg">
+            <h1 class="mt-2 font-indie text-5xl leading-tight drop-shadow">Endless<br>Tic-Tac-Toe</h1>
+            <p class="mt-2 text-sm text-white/80">Only 3 pieces each. Your oldest one fades away.</p>
+
+            <div class="mt-6 space-y-4 rounded-3xl bg-white/15 p-5 shadow-xl backdrop-blur">
+                <button id="createBtn" type="button"
+                    class="w-full rounded-full bg-white py-3 font-bold shadow transition hover:bg-white/90 active:scale-[0.98] disabled:opacity-60">
+                    <span class="text-brand">Create a room</span>
+                </button>
+
+                <div class="flex items-center gap-3 text-xs uppercase tracking-widest text-white/70">
+                    <span class="h-px flex-1 bg-white/30"></span>or join a friend<span class="h-px flex-1 bg-white/30"></span>
+                </div>
+
+                <form id="joinForm" class="flex gap-2" autocomplete="off">
+                    <input id="codeInput" name="code" maxlength="4" placeholder="CODE" aria-label="Room code"
+                        autocapitalize="characters" spellcheck="false"
+                        class="min-w-0 flex-1 rounded-full bg-white/90 px-4 py-3 text-center text-xl font-bold uppercase tracking-[0.4em] text-indigo-700 outline-none placeholder:text-indigo-300 focus:bg-white focus:ring-4 focus:ring-white/40">
+                    <button type="submit"
+                        class="rounded-full bg-indigo-700 px-6 font-bold shadow transition hover:bg-indigo-800 active:scale-[0.98]">
+                        Join
+                    </button>
+                </form>
+
+                <p id="lobbyError" class="text-sm font-semibold text-rose-100" hidden></p>
+            </div>
+
+            <button id="localBtn" type="button" class="mt-5 text-sm text-white/80 underline underline-offset-4 hover:text-white">
+                Play on this device instead
+            </button>
+        </div>
+    </section>
+
+    <!-- Game (online or local) -->
+    <section id="game" class="relative flex min-h-dvh flex-col items-center" hidden>
+        <header id="statusPill"
+            class="w-[260px] rounded-b-3xl bg-white/50 px-4 pb-2 pt-1 text-center shadow-sm transition-colors md:pt-2">
+            <p id="statusSub" class="text-[11px] font-semibold uppercase tracking-wider text-indigo-900/70"></p>
+            <p id="statusMain" class="text-brand text-base font-bold md:text-lg"></p>
+        </header>
+
+        <p id="notice" class="mt-2 rounded-full bg-black/30 px-4 py-1 text-sm font-semibold" hidden></p>
+
+        <div class="flex w-full flex-1 flex-col items-center justify-center gap-4 px-4 py-3">
+            <div id="board" class="grid w-[min(600px,92vw,56dvh)] grid-cols-3 gap-2 transition-[width]"></div>
+            <div id="panel" class="w-full max-w-md rounded-3xl bg-white/95 p-5 text-center text-slate-700 shadow-xl" hidden></div>
+        </div>
+
+        <footer class="flex gap-2">
+            <button id="leaveBtn" type="button"
+                class="w-[130px] rounded-t-3xl bg-white/50 pb-1 pt-2 font-bold outline-none transition-colors hover:bg-white focus-visible:bg-white">
+                <span class="text-brand">Leave</span>
+            </button>
+            <button id="restartBtn" type="button"
+                class="w-[130px] rounded-t-3xl bg-white/50 pb-1 pt-2 font-bold outline-none transition-colors hover:bg-white focus-visible:bg-white" hidden>
+                <span class="text-brand">Restart</span>
+            </button>
+        </footer>
+    </section>
+</body>
+</html>

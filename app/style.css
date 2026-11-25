@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  --font-quicksand: "Quicksand", ui-sans-serif, system-ui, sans-serif;
+  --font-indie: "Indie Flower", cursive;
+}
+
+/* The rose → fuchsia → indigo gradient used as text color. */
+@utility text-brand {
+  background-image: linear-gradient(
+    to right,
+    var(--color-rose-700),
+    var(--color-fuchsia-700),
+    var(--color-indigo-700)
+  );
+  background-clip: text;
+  color: transparent;
+}
+
+.swal2-popup {
+  font-family: var(--font-quicksand);
+}
